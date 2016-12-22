@@ -1,0 +1,60 @@
+//
+//  PrefixHeader.pch
+//  SDWebImage_test
+//
+//  Created by Timmy on 2016/11/25.
+//  Copyright © 2016年 ysw.com. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "SW_HexColor.h"
+
+
+#if 0
+// MARK: 主线程安全回调
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
+//#define wSelf(object) __weak __typeof(object) wObject = object;
+
+//定制textfield_Placeholder 字体大小
+#define SW_Textfield_Placeholder_FontSet(textField,n) [textField setValue:[UIFont systemFontOfSize:n] forKeyPath:@"_placeholderLabel.font"];
+
+// MARK: 颜色相关
+#define COLOR_RGB(r,g,b) [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:1]
+#define COLOR_RGBA(r,g,b,a) [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:a]
+#define SW_HexColor(colorString) [SW_HexColor hexColor:colorString]
+#define SW_HexColorAlpha(colorString,a) [SW_HexColor hexColor:colorString alpha:a]
+
+// MARK: 屏幕尺寸相关
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+// MARK: 设备相关
+#define IS_IPHONE4 [[UIScreen mainScreen] bounds].size.height == 480.0
+#define IS_IPHONE5 [[UIScreen mainScreen] bounds].size.height == 568.0
+#define IS_IPHONE6 [[UIScreen mainScreen] bounds].size.height == 667.0
+#define IS_IPHONE6PLUS [[UIScreen mainScreen] bounds].size.height == 736.0
+// MARK: 系统相关
+#define IS_IOS_7 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? YES : NO)
+#define IS_IOS_8 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) ? YES : NO)
+#define IS_IOS_9 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) ? YES : NO)
+#define IS_IOS_10 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) ? YES : NO)
+
+
+#endif
+
+
+#endif /* PrefixHeader_pch */
